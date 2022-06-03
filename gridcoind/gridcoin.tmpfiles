@@ -1,0 +1,2 @@
+d /var/lib/gridcoind 0770 gridcoin gridcoin - -
+d /etc/gridcoin      0770 gridcoin gridcoin - -
