@@ -10,6 +10,7 @@ fi
 rm -rf /tmp/aur-$1
 
 git clone ssh://aur@aur.archlinux.org/$1.git /tmp/aur-$1
+git clean -xf $1
 cp -r $1/* /tmp/aur-$1
 git -C /tmp/aur-$1 add /tmp/aur-$1/*
 
