@@ -1,7 +1,7 @@
 # Original PKGBUILD written by Tahvok.
 
 pkgname=gridcoind
-pkgver=5.3.3.0
+pkgver=5.4.0.0
 pkgrel=0
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 
@@ -17,20 +17,18 @@ source=("$_sourcename.tar.gz::https://github.com/gridcoin-community/Gridcoin-Res
 	"gridcoin.sysusers"
 	"gridcoin.tmpfiles"
 	"gridcoind.service"
-	"gridcoin.conf"
-	"00_exit_after_forking.patch")
+	"gridcoin.conf")
 
-sha256sums=('45c80a24a289c5488df8cf3fdc713b19679a9a248de75227b552d72321ac0ed7'
+sha256sums=('195c08bb7f1712a5f990b9b945c275976dc4539bbdade3ad89367aaf9d967b6b'
 	    'adca82b39386e0aac7ff2fadab491e7181b866ab6c98b2080b8d421e2e4276c0'
     	    'ecff0da53b120f202864df881c921e4eb1dbf8e5f030f98e1fc684a38d4e2f2b'
-    	    '1bd2f6026428fe1626d1d19d67cb08364ace475048986f374fa9415c17edb611'
-    	    '506b5a615944ce5cc75f4bed867ad5ca9d95a6fb5c9b4d641f03c499a4756106'
-	    '7f99d7962066568f23682a0be29a35cae97a6bbe5cb1a040bd67fd6e0ce12700')
+    	    '0c57d5866b81e1f17082dd02a2ea4c0cb428ef70ccb7cb33554e9cb6d5fef54d'
+    	    '506b5a615944ce5cc75f4bed867ad5ca9d95a6fb5c9b4d641f03c499a4756106')
 
 prepare() {
   cd "$srcdir/$_sourcename"
 
-  patch src/init.cpp "$srcdir/00_exit_after_forking.patch"
+  # patch src/init.cpp "$srcdir/00_exit_after_forking.patch"
 }
 
 build() {
