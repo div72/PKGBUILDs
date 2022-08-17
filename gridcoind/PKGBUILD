@@ -2,7 +2,7 @@
 
 pkgname=gridcoind
 pkgver=5.4.0.0
-pkgrel=0
+pkgrel=3
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 
 arch=('x86_64')
@@ -17,12 +17,14 @@ source=("$_sourcename.tar.gz::https://github.com/gridcoin-community/Gridcoin-Res
 	"gridcoin.sysusers"
 	"gridcoin.tmpfiles"
 	"gridcoind.service"
+	"gridcoind-testnet.service"
 	"gridcoin.conf")
 
 sha256sums=('195c08bb7f1712a5f990b9b945c275976dc4539bbdade3ad89367aaf9d967b6b'
 	    'adca82b39386e0aac7ff2fadab491e7181b866ab6c98b2080b8d421e2e4276c0'
     	    'ecff0da53b120f202864df881c921e4eb1dbf8e5f030f98e1fc684a38d4e2f2b'
     	    '0c57d5866b81e1f17082dd02a2ea4c0cb428ef70ccb7cb33554e9cb6d5fef54d'
+            'SKIP'
     	    '506b5a615944ce5cc75f4bed867ad5ca9d95a6fb5c9b4d641f03c499a4756106')
 
 prepare() {
@@ -49,9 +51,12 @@ package() {
   install -Dm755 src/gridcoinresearchd "$pkgdir/usr/bin/gridcoind"
   install -Dm644 doc/gridcoinresearchd.1 "$pkgdir/usr/share/man/man1/gridcoind.1"
   install -Dm644 "$srcdir/gridcoind.service" "$pkgdir/usr/lib/systemd/system/gridcoind.service"
+  install -Dm644 "$srcdir/gridcoind-testnet.service" "$pkgdir/usr/lib/systemd/system/gridcoind-testnet.service"
   install -Dm644 "$srcdir/gridcoin.sysusers" "$pkgdir/usr/lib/sysusers.d/gridcoin.conf"
   install -Dm644 "$srcdir/gridcoin.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/gridcoin.conf"
   install -Dm644 "$srcdir/gridcoin.conf" "$pkgdir/etc/gridcoin/gridcoin.conf"
+  install -Dm644 "$srcdir/gridcoin.conf" "$pkgdir/etc/gridcoin/testnet/gridcoin.conf"
+  chmod -R 770 "$pkgdir/etc/gridcoin"
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
