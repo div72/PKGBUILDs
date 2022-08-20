@@ -1,0 +1,45 @@
+# Maintainer: div72 <aur@div72.xyz>
+pkgname="grcbountybot"
+pkgver="0.0.0"
+pkgrel=1
+pkgdesc="A bounty management bot for Gridcoin-Tasks GitHub Repo."
+arch=("any")
+url="https://github.com/div72/grcbountybot"
+license=('GPL')
+
+depends=("python" "python-aiohttp" "gridcoind")
+
+backup=("etc/grcbountybot/config")
+
+source=("https://github.com/div72/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        "grcbountybot.service"
+        "grcbountybot.sysusers"
+        "grcbountybot.tmpfiles")
+sha256sums=("7a491896f37eee7bed8af70c12146db3cf332da7548241be6b999d468495baf0"
+            "SKIP"
+            "SKIP"
+            "SKIP")
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    pip install octomachinery==0.3.6 -t .
+    rm -rf ./bin
+    rm -rf *.dist-info
+}
+
+package() {
+    mkdir -p "${pkgdir}/opt/"
+    cp -r "${srcdir}/${pkgname}-${pkgver}/" "${pkgdir}/opt/"
+    mv "${pkgdir}/opt/${pkgname}-${pkgver}" "${pkgdir}/opt/${pkgname}"
+    chmod -R 644 "${pkgdir}/opt/${pkgname}/"
+    chmod +x "${pkgdir}/opt/${pkgname}/run.sh"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "${pkgdir}/opt/${pkgname}/run.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm770 "${srcdir}/${pkgname}-${pkgver}/config.example" "${pkgdir}/etc/${pkgname}/config"
+    install -Dm644 "${srcdir}/grcbountybot.service" "${pkgdir}/usr/lib/systemd/system/grcbountybot.service"
+    install -Dm644 "${srcdir}/grcbountybot.sysusers" "${pkgdir}/usr/lib/sysusers.d/grcbountybot.conf"
+    install -Dm644 "${srcdir}/grcbountybot.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/grcbountybot.conf"
+
+    chown -R root:root "${pkgdir}"
+}

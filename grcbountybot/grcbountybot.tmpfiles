@@ -1,0 +1,2 @@
+d /var/lib/grcbountybot 0770 grcbountybot grcbountybot - -
+d /etc/grcbountybot     0770 grcbountybot grcbountybot - -
