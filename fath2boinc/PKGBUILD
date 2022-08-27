@@ -1,0 +1,34 @@
+pkgname=fath2boinc
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Folding@Home to BOINC statistics translator."
+
+arch=('x86_64')
+url="https://github.com/div72/fath2boinc"
+license=('MIT')
+
+depends=("bash" "bzip2" "curl" "gzip")
+
+source=("https://github.com/div72/fath2boinc/archive/refs/tags/v${pkgver}.tar.gz")
+
+sha256sums=('e27f73a19c56d52d5a5236c3b0c24aef404e002880353cc1c28d1db746aeea59')
+
+prepare() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  # Reserved for future usage.
+}
+
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  make pkg
+}
+
+package() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+
+  cp -R pkg/* "$pkgdir/"
+  chown -R root:root "$pkgdir"
+}
+
