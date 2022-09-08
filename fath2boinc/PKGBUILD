@@ -1,5 +1,5 @@
 pkgname=fath2boinc
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Folding@Home to BOINC statistics translator."
 
@@ -11,7 +11,7 @@ depends=("bash" "bzip2" "curl" "gzip")
 
 source=("https://github.com/div72/fath2boinc/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('e27f73a19c56d52d5a5236c3b0c24aef404e002880353cc1c28d1db746aeea59')
+sha256sums=('720782a01db92fc7c35c167c48540cc6603f461416b21a641a113842e08e6ab4')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
