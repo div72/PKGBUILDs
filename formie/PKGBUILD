@@ -1,5 +1,5 @@
 pkgname="formie"
-pkgver="1.2.0"
+pkgver="1.2.1"
 pkgrel=1
 pkgdesc="Open source form application made with Flask + pure HTML/CSS/JS."
 arch=("any")
@@ -16,7 +16,7 @@ source=("https://github.com/div72/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
         "formie.service"
         "formie.sysusers"
         "formie.tmpfiles")
-sha256sums=("bdf557489654c39b03049f28c8153455eb803a92d5d4a82de4baf06a6c29184b"
+sha256sums=("945feef59f9f000a75f4c30f701ca5d316dfcb8ee0cd25c2d587865f30ce68ea"
             "SKIP"
             "SKIP"
             "SKIP"
