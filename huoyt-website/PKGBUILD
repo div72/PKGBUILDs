@@ -1,7 +1,7 @@
 # Maintainer: div72 <aur@div72.xyz>
 pkgname="huoyt-website"
-pkgver="0.2.0"
-pkgrel=2
+pkgver="1.0.2"
+pkgrel=1
 pkgdesc="The website for the free software club of Hacettepe University."
 arch=("any")
 url="https://github.com/hacettepeoyt/website"
@@ -12,26 +12,26 @@ makedepends=("nodejs")
 
 backup=("etc/huoyt-website/config.sh")
 
-source=("https://github.com/hacettepeoyt/website/archive/refs/tags/v${pkgver}-alpha.tar.gz"
+source=("https://github.com/hacettepeoyt/website/archive/refs/tags/v${pkgver}.tar.gz"
         "huoyt-website"
         "huoyt-website.service"
         "huoyt-website.sysusers"
         "huoyt-website.tmpfiles")
-sha256sums=("1e94077d2ea59a6a1775f84c0c0e5ca6c96db8894170ac43c6cbb900b25d3669"
+sha256sums=("9bcab3a813629025d27d06b9e1ba8996ddb933ce226f8d67360e7c971e9cb104"
             "SKIP"
             "SKIP"
             "SKIP"
             "SKIP")
 
 build() {
-    cd "${srcdir}/website-${pkgver}-alpha"
+    cd "${srcdir}/website-${pkgver}"
     npm install
 }
 
 package() {
     mkdir -p "${pkgdir}/opt/"
-    cp -r "${srcdir}/website-${pkgver}-alpha/" "${pkgdir}/opt/"
-    mv "${pkgdir}/opt/website-${pkgver}-alpha" "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/website-${pkgver}/" "${pkgdir}/opt/"
+    mv "${pkgdir}/opt/website-${pkgver}" "${pkgdir}/opt/${pkgname}"
     chmod -R 755 "${pkgdir}/opt/${pkgname}/"
     install -Dm755 "${srcdir}/huoyt-website" "${pkgdir}/usr/bin/huoyt-website"
     mkdir -p "${pkgdir}/etc/huoyt-website"
