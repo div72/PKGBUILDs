@@ -8,5 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: build
-        run: make $(make print-PACKAGES)
+        run: |
+          chmod -R a+w .
+          make $(make print-PACKAGES)
 
