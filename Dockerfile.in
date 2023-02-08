@@ -1,0 +1,8 @@
+FROM --platform=linux/amd64 archlinux:base-devel
+
+RUN pacman -Syu --needed --noconfirm git {{make_depends}} && useradd -m builder && mkdir /home/builder/PKGBUILDs
+
+# V required for makepkg.
+RUN su builder -c "git clone https://github.com/vlang/v.git /home/builder/v && cd /home/builder/v && make" && /home/builder/v/v symlink
+
+USER builder
