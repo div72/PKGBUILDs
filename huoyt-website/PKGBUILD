@@ -8,7 +8,7 @@ url="https://github.com/hacettepeoyt/website"
 license=('MIT')
 
 depends=("nodejs" "mongodb")
-makedepends=("nodejs")
+makedepends=("nodejs" "npm")
 
 backup=("etc/huoyt-website/config.sh")
 
