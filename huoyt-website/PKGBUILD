@@ -1,6 +1,6 @@
 # Maintainer: div72 <aur@div72.xyz>
 pkgname="huoyt-website"
-pkgver="1.0.2"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc="The website for the free software club of Hacettepe University."
 arch=("any")
@@ -17,7 +17,7 @@ source=("https://github.com/hacettepeoyt/website/archive/refs/tags/v${pkgver}.ta
         "huoyt-website.service"
         "huoyt-website.sysusers"
         "huoyt-website.tmpfiles")
-sha256sums=("9bcab3a813629025d27d06b9e1ba8996ddb933ce226f8d67360e7c971e9cb104"
+sha256sums=("150d473960cc85fb1a89e048bd9d44e00b2dc4c34a122c24ac9649445d4c28f7"
             "SKIP"
             "SKIP"
             "SKIP"
