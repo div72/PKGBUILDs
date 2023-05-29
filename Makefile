@@ -27,7 +27,7 @@ default:
 $(DOCKER_TAG).tar.gz: Dockerfile
 	docker build -t $(DOCKER_TAG) .
 	@echo "Saved Docker image tag as $(DOCKER_TAG)."
-	docker save $(DOCKER_TAG) | gzip > $(DOCKER_TAG).tar.gz
+	#docker save $(DOCKER_TAG) | gzip > $(DOCKER_TAG).tar.gz
 
 Dockerfile: Dockerfile.in $(wildcard */PKGBUILD)
 	sed "s/{{make_depends}}/$(MAKE_DEPENDS)/g" < Dockerfile.in > Dockerfile
