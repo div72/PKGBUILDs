@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-source /etc/huoyt-website/config.sh
-
-cd /opt/huoyt-website
-node /opt/huoyt-website/app.js

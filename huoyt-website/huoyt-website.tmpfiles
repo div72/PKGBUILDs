@@ -1,2 +1,0 @@
-d /var/lib/huoyt-website 0770 huoyt-website huoyt-website - -
-d /etc/huoyt-website     0770 huoyt-website huoyt-website - -
